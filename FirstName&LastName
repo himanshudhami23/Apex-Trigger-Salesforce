@@ -1,0 +1,23 @@
+//Write Trigger when create a contact its first and last name first letter should be capital
+----------------**** Handler class *****----------------------------------------------------------
+public class CheckContactNameHandler {
+    public static void contactName(list<Contact> ncont){
+        list<Contact> upcont = new list<Contact>();
+        for(Contact cont : ncont){
+            if(cont.FirstName!=null && cont.LastName!=null) {
+                string FName = cont.FirstName.substring(0,1).toUpperCase()+cont.FirstName.substring(1);
+                string LName = cont.LastName.substring(0,1).toUpperCase()+cont.LastName.substring(1);
+                cont.FirstName = FName;
+                cont.LastName = LName;
+                upcont.add(cont);
+            }
+        }
+        
+    }
+}
+
+***********-------------------------------------- Trigger Class **********------------------------------------------------------
+trigger CheckContactNameTest on Contact (before insert) {
+    CheckContactNameHandler.contactName(trigger.new);
+
+}
