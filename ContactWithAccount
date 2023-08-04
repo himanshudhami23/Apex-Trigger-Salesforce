@@ -1,0 +1,19 @@
+try{
+    list<Account> acc = new list<Account>();
+        list<Contact> cont = new list<Contact>();        
+        list<Contact> relCont = [Select Id, Name, MailingState, Account.id, Account.Industry, Account.Name From Contact 
+                                 Where AccountId In : acc And Account.Industry = 'Technology' And
+                                Contact.MailingState = 'California'];
+        for(Contact con : relCont) {
+            con.Email.endsWith('@calitech.com');
+            cont.add(con);
+        }        
+        for(Contact con : cont) {
+            System.debug('Account Name:- '+ con.Account.Name);
+            System.debug('Contact Name:- ' + con.FirstName + ' ' + con.LastName);
+            System.debug('Email Address:- ' + con.Email);
+        }
+}
+catch(Exception e){
+    system.debug(e);
+}
