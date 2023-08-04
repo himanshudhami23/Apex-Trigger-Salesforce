@@ -7,7 +7,9 @@ try{
         for(Contact con : relCont) {
             con.Email.endsWith('@calitech.com');
             cont.add(con);
-        }        
+            update cont;
+        }
+    	
         for(Contact con : cont) {
             System.debug('Account Name:- '+ con.Account.Name);
             System.debug('Contact Name:- ' + con.FirstName + ' ' + con.LastName);
